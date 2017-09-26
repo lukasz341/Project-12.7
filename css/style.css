@@ -26,15 +26,28 @@ body {margin: 0;}
 
 
 /* COLUMN */
+
+.create-column {
+	margin: 10px;
+}
 .column {
   order: 1;
   min-width: 300px;
   min-height: 50vh;
-  background-color: lightgrey;
+  background-color: #CCCCFF;
   margin-left: 8px;
   list-style: none;
   position: relative;
 }
+
+.column-title {
+	text-align: center;	
+}
+.column:nth-child(even) {
+	background-color: #9999FF;
+}
+
+
 .column-add-card {
   cursor: pointer;
   text-decoration: underline;

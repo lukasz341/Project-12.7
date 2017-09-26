@@ -1,3 +1,9 @@
+var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+var myHeaders = {
+  'X-Client-Id': 'X-Client-Id',
+  'X-Auth-Token': 'X-Auth-Token'
+};
+
 var board = {
 	name: 'Tablica Kanban',
 	createColumn: function(column) {
@@ -9,7 +15,18 @@ var board = {
 
 $('.create-column')
 	.click(function(){
-		board.createColumn(new Column(prompt('Wpisz nazwę kolumny')));
+		 var columnName = prompt('Enter a column name');
+        	$.ajax({
+    			url: baseUrl + '/column',
+    			method: 'POST',
+    			data: {
+            		name: columnName
+    			},
+    			success: function(response){
+    				var column = new Column(response.id, columnName);
+    				board.createColumn(column);
+          	}
+        });
 	});
 	
 function initSortable() {
